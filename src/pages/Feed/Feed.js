@@ -8,7 +8,6 @@ import Paginator from '../../components/Paginator/Paginator';
 import Loader from '../../components/Loader/Loader';
 import ErrorHandler from '../../components/ErrorHandler/ErrorHandler';
 import './Feed.css';
-import post from '../../components/Feed/Post/Post';
 
 class Feed extends Component {
   state = {
@@ -32,7 +31,7 @@ class Feed extends Component {
         }
       `,
     };
-    fetch('http://localhost:8080/graphql', {
+    fetch('https://nd-node-social-network.herokuapp.com/graphql', {
       method: 'POST',
       headers: {
         Authorization: 'Bearer ' + this.props.token,
@@ -90,7 +89,7 @@ class Feed extends Component {
         page: page,
       },
     };
-    fetch('http://localhost:8080/graphql', {
+    fetch('https://nd-node-social-network.herokuapp.com/graphql', {
       method: 'POST',
       headers: {
         Authorization: 'Bearer ' + this.props.token,
@@ -133,7 +132,7 @@ class Feed extends Component {
         userStatus: this.state.status,
       },
     };
-    fetch('http://localhost:8080/graphql', {
+    fetch('https://nd-node-social-network.herokuapp.com/graphql', {
       method: 'POST',
       headers: {
         Authorization: 'Bearer ' + this.props.token,
@@ -148,7 +147,7 @@ class Feed extends Component {
         if (resData.errors) {
           throw new Error('Updating status failed!');
         }
-        console.log(resData);
+        // console.log(resData);
       })
       .catch(this.catchError);
   };
@@ -181,7 +180,7 @@ class Feed extends Component {
     if (this.state.editPost) {
       formData.append('oldPath', this.state.editPost.imagePath);
     }
-    fetch('http://localhost:8080/post-image', {
+    fetch('https://nd-node-social-network.herokuapp.com/post-image', {
       method: 'PUT',
       headers: {
         Authorization: 'Bearer ' + this.props.token,
@@ -238,7 +237,7 @@ class Feed extends Component {
           };
         }
 
-        return fetch('http://localhost:8080/graphql', {
+        return fetch('https://nd-node-social-network.herokuapp.com/graphql', {
           method: 'POST',
           body: JSON.stringify(graphqlQuery),
           headers: {
@@ -320,7 +319,7 @@ class Feed extends Component {
         }
       `,
     };
-    fetch('http://localhost:8080/graphql', {
+    fetch('https://nd-node-social-network.herokuapp.com/graphql', {
       method: 'POST',
       headers: {
         Authorization: 'Bearer ' + this.props.token,
@@ -332,7 +331,7 @@ class Feed extends Component {
         return res.json();
       })
       .then((resData) => {
-        console.log(resData);
+        // console.log(resData);
         if (resData.errors) {
           throw new Error('Deleting post failed!');
         }

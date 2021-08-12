@@ -74,7 +74,7 @@ class App extends Component {
         password: authData.password,
       },
     };
-    fetch('http://localhost:8080/graphql', {
+    fetch('https://nd-node-social-network.herokuapp.com/graphql', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ class App extends Component {
         if (resData.errors) {
           throw new Error('User login failed!');
         }
-        console.log(resData);
+        // console.log(resData);
         this.setState({
           isAuth: true,
           token: resData.data.login.token,
@@ -137,7 +137,7 @@ class App extends Component {
         password: authData.signupForm.password.value,
       },
     };
-    fetch('http://localhost:8080/graphql', {
+    fetch('https://nd-node-social-network.herokuapp.com/graphql', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
